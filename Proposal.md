@@ -1,7 +1,7 @@
 # Finall Project Proposal
 
 ## Repository
-<Link to your project's public GitHub respository>
+(https://github.com/Anna-Mtz/Final-Project.git)
 
 ## Description
 This will be a platformer, I will have a sprite that will jump with space, if possible an infinite amount of platforms, and a dead/game over screen with a score counter if needed.
