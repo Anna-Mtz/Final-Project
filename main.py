@@ -23,8 +23,6 @@ big_obsticales = [pygame.image.load(os.path.join("assests/obsticles", "bigduck.p
 
 track = [pygame.image.load(os.path.join("assests/other", "Track.png"))]
 
-
-
 class Egg:
     x_pos = 80
     y_pos = 310
@@ -82,19 +80,17 @@ class Egg:
         screen.blit(self.image, (self.egg_rect.x, self.egg_rect.y))
 
 def main():
-    global game_speed, x_pos_bg, y_pos_bg, points
+    global game_speed, points
     run = True
     clock = pygame.time.Clock()
     player = Egg()
     game_speed = 1.4
-    x_pos_bg = 0
-    y_pos_bg = 380
     points = 0
     font = pygame.font.Font('freesansbold.ttf', 20)
-
+    
     def score ():
         global points, game_speed
-        points =+ 1
+        points += 1
         if points % 100 ==0:
             game_speed += 1
         text = font.render("Points:" + str(points), True, (0, 0, 0))
@@ -102,15 +98,6 @@ def main():
         textRect.center = (1000, 40)
         screen.blit(text, textRect)
 
-    def background():
-        global x_pos_bg, y_pos_bg
-        image_width = track.get_width()
-        screen.blit(track, (x_pos_bg, y_pos_bg))
-        screen.blit(track, (image_width + x_pos_bg, y_pos_bg))
-        if x_pos_bg <= -image_width:
-            screen.blit(track, (image_width + x_pos_bg, y_pos_bg))
-            x_pos_bg = 0
-        x_pos_bg -= game_speed
 
     while run:
         for event in pygame.event.get():
@@ -123,7 +110,7 @@ def main():
         player.draw(screen)
         player.update(userInput)
 
-        background()
+        
         score()
 
         clock.tick(30)
